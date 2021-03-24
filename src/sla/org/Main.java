@@ -1,7 +1,6 @@
 package sla.org;
 
 import javafx.application.Application;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -9,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.io.FileInputStream;
-import javafx.scene.control.ChoiceBox;
+
 
 
 public class Main  extends Application{
@@ -21,10 +20,10 @@ public class Main  extends Application{
         Image image4;
         Image image5;
 
-        ChoiceBox choiceBox;
-
-
-
+        Button button1;
+        Button button2;
+        Button button3;
+        Button button4;
 
         @Override
         public void start(Stage primaryStage) throws Exception {
@@ -32,7 +31,6 @@ public class Main  extends Application{
 
             FileInputStream input1 = new FileInputStream("/Users/aidanroman/Desktop/Black Market.png");
             Image image = new Image(input1);
-
 
             FileInputStream input2 = new FileInputStream("/Users/aidanroman/Desktop/Classified.jpeg");
             image2 = new Image(input2);
@@ -49,19 +47,30 @@ public class Main  extends Application{
 
             imagesView = new ImageView(image);
 
-            choiceBox = new ChoiceBox();
+            button1 = new Button("Classified Document");
+            button2 = new Button("Walt Disney's arm");
+            button3 = new Button("Crown jewels");
+            button4 = new Button("An old dude");
 
-            choiceBox.getItems().add("Classified documents");
-            choiceBox.getItems().add("Walt Disney's arm");
-            choiceBox.getItems().add("Prized jewels");
-            choiceBox.getItems().add("dave");
-            choiceBox.setOnAction(actionEvent -> {
 
+           button1.setOnAction(actionEvent -> {
                 choiceboxUsed();
             });
-        ;
 
-            VBox layout = new VBox(imagesView,choiceBox);
+            button2.setOnAction(actionEvent -> {
+                secondbuttonUsed();
+            });
+
+            button3.setOnAction(actionEvent -> {
+                thirdbuttonUsed();
+            });
+
+            button4.setOnAction(actionEvent -> {
+                fourthbuttonUsed();
+            });
+
+
+            VBox layout = new VBox(imagesView,button1,button2,button3,button4);
             Scene scene = new Scene(layout, 600, 400);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -72,9 +81,36 @@ public class Main  extends Application{
         }
 
         void choiceboxUsed(){
-    String Choice = choiceBox.getId();
+    String Choice = button1.getId();
             imagesView.setImage(image2);
         }
+
+    void secondbuttonUsed(){
+        String Choice = button2.getId();
+        imagesView.setImage(image3);
+
+    }
+
+    void thirdbuttonUsed(){
+        String Choice = button3.getId();
+        imagesView.setImage(image4);
+
+    }
+
+    void fourthbuttonUsed(){
+        String Choice = button4.getId();
+        imagesView.setImage(image5);
+
+    }
+
+
+
+
+
+
+
+
+
 
          public static void main(String[] args) {
             Application.launch(args);
